@@ -49,11 +49,15 @@ class Effect extends P5Base {
         init_flow()
       }
       p.draw = function() {
-        p.translate(-offset, -offset)
-        //display_flow()
-        update_particles()
-        display_particles()
-        tick += 0.002
+        if (tick < 1) {
+          p.translate(-offset, -offset)
+          //display_flow()
+          update_particles()
+          display_particles()
+          tick += 0.002
+        } else {
+          p.noLoop();
+        }
       }
 
       function init_particles() {
